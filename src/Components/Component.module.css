@@ -1,4 +1,21 @@
 
+
+h1 {
+  padding-top: 10px;
+}
+
+
+blockquote {
+  background: #00e1ff;
+  border-left: 10px solid #ff00b2;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+
+blockquote p {
+  display: inline;
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;
