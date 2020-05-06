@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../Component.module.css';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
+import toolbar from '../../assets/wxtoolbar.png';
 
 function Home() {
     return (
@@ -60,9 +61,16 @@ function Home() {
                     <li>User Guide: Provides a descripton of various app features.</li>
                 </ul>
             </p>
+            <blockquote>
+                <p>
+                    At first launch, only the City Search tab is enabled. When the first city search is performed, all other 
+                    tabs become enabled.
+                </p>
+            </blockquote>
+            <img className={styles.wximage} src={toolbar} alt="toolbar" />
 
 
-
+            
             </div>
             <Footer />
         </div>
