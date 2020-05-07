@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AppIcon from '../../assets/images/app-icon32.png';
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
       <nav className="navbar navbar-expand-md">
 
             <li className="navbar-brand">
-              <Link to="/"><span className="nav-link text-white"><img src={AppIcon} alt="app icon" /></span></Link>
+              <NavLink to="/"><span className="nav-link text-white"><img src={AppIcon} alt="app icon" /></span></NavLink>
             </li>
             <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -17,25 +17,32 @@ function Nav() {
             <div className="collapse navbar-collapse" id="main-navigation">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <Link to="/"><span className="nav-link text-white">Home</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/" >
+                    <span className="nav-link text-white">Home</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/solve"><span className="nav-link text-white">Solve</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/solve">
+                    <span className="nav-link text-white">Solve</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/wxicons"><span className="nav-link text-white">Weather</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/wxicons">
+                    <span className="nav-link text-white">Weather</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/alert"><span className="nav-link text-white">Alert</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/alert">
+                    <span className="nav-link text-white">Alert</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/caution"><span className="nav-link text-white">Caution</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/caution">
+                    <span className="nav-link text-white">Caution</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/legal"><span className="nav-link text-white">Legal</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/legal">
+                    <span className="nav-link text-white">Legal</span></NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link to="/contact"><span className="nav-link text-white">Contact</span></Link>
+                  <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/contact">
+                    <span className="nav-link text-white">Contact</span></NavLink>
                 </li>
               </ul>
             </div>
