@@ -1,11 +1,15 @@
 import React from 'react';
 import './Nav.css';
 import { Link } from 'react-router-dom';
+import AppIcon from '../../assets/images/app-icon32.png';
 
 function Nav() {
     return (
-      <nav className="navbar navbar-expand-md bg-primary">
+      <nav className="navbar navbar-expand-md">
 
+            <li className="navbar-brand">
+              <Link to="/"><span className="nav-link text-white"><img src={AppIcon} alt="app icon" /></span></Link>
+            </li>
             <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
