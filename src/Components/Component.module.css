@@ -33,6 +33,11 @@ blockquote p {
     margin-right: auto;
   }
 
+  .figcaption {
+    border: none;
+    text-align: center;
+  }
+
   @media (min-width: 768px) {
     .container{
       width: 750px;
