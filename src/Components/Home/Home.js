@@ -2,14 +2,9 @@ import React from 'react';
 import styles from '../Component.module.css';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
-import toolbar from '../../assets/wxtoolbar.png';
-import search from '../../assets/wxsearch.png';
-import current from '../../assets/wxmapcallout.png';
-import forecast from '../../assets/wxforecast.png';
-import diamond from '../../assets/wxdiamondtouch.png';
-import tempred from '../../assets/wxtempred.png';
-import tempgreen from '../../assets/wxtempgreen.png';
-import temperror from '../../assets/wxtemperror.png';
+import {
+    Toolbar, Search, Current, Forecast, Diamond, TempRed, TempGreen, TempError 
+} from '../../assets/images/home';
 
 function Home() {
     return (
@@ -74,7 +69,7 @@ function Home() {
                     tabs become enabled.
                 </p>
             </blockquote>
-            <img className={styles.wximage} src={toolbar} alt="toolbar" />
+            <img className={styles.wximage} src={Toolbar} alt="toolbar" />
             <figcaption className={styles.figcaption}>Figure 1 - App Toolbar</figcaption>
 
             <h2>City Search View</h2>
@@ -84,7 +79,7 @@ function Home() {
                 first three characters of a city name will generate a list of city and state matches from a local database. 
                 Current weather conditions are fetched from the weather server and displayed when a city location is selected.
             </p>
-            <img className={styles.wximage} src={search} alt="toolbar" />
+            <img className={styles.wximage} src={Search} alt="toolbar" />
             <figcaption className={styles.figcaption}>Figure 2 - City Search</figcaption>
 
             <h3>Location Data Privacy</h3>
@@ -114,7 +109,7 @@ function Home() {
                     Only weather data for the last search city appears in the Current Weather View.
                 </p>
             </blockquote>
-            <img className={styles.wximage} src={current} alt="current weather" />
+            <img className={styles.wximage} src={Current} alt="current weather" />
             <figcaption className={styles.figcaption}>Figure 3 - Current Weather</figcaption>
 
             <h2>Update Frequency</h2>
@@ -151,7 +146,7 @@ function Home() {
                     <li>Current Temperature</li>
                 </ul>
             </p>
-            <img className={styles.wximage} src={forecast} alt="forecast weather" />
+            <img className={styles.wximage} src={Forecast} alt="forecast weather" />
             <figcaption className={styles.figcaption}>Figure 4 - Forecast View</figcaption> 
     
             <h3>Scrollable Alert List</h3>
@@ -177,7 +172,7 @@ function Home() {
                 presents an alert detail page. Swiping on the presented page shows additional details if more that one icon appears in the 
                 Alert List. The Alert List is shown at the top of the Forecast View.
             </p>
-            <img className={styles.wximage} src={diamond} alt="alert detail" />
+            <img className={styles.wximage} src={Diamond} alt="alert detail" />
             <figcaption className={styles.figcaption}>Figure 5 - Alert Detail</figcaption> 
  
             <h3>Current Temperature</h3>
@@ -186,10 +181,10 @@ function Home() {
                 View. It is displayed in two (2) formats. Expired, shown encircled in red, and current, shown encircled
                 in green.
             </p>
-            <img className={styles.wximage} src={tempred} alt="temperature red" />
+            <img className={styles.wximage} src={TempRed} alt="temperature red" />
             <figcaption className={styles.figcaption}>Figure 6 - Expired Temperature</figcaption> 
     
-            <img className={styles.wximage} src={tempgreen} alt="temperature green" />
+            <img className={styles.wximage} src={TempGreen} alt="temperature green" />
             <figcaption className={styles.figcaption}>Figure 7 - Current Temperature</figcaption> 
  
             <h3>Erroneous Reading</h3>
@@ -199,7 +194,7 @@ function Home() {
                 Station View. Station View can be selected from the App Settings tab. 
                 See <Link to="/solve">Solve </Link> for the troubleshooting guide.
             </p>
-            <img className={styles.wximage} src={temperror} alt="temperature error" />
+            <img className={styles.wximage} src={TempError} alt="temperature error" />
             <figcaption className={styles.figcaption}>Figure 8 - Erroneous Temperature</figcaption> 
  
             <br/>
