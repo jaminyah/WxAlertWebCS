@@ -33,6 +33,10 @@ blockquote p {
     margin-right: auto;
   }
 
+  .wxhrfooter {
+    border-top: 1px solid white;
+  }
+
   .figcaption {
     border: none;
     text-align: center;

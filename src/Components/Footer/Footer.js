@@ -1,5 +1,9 @@
 import React from 'react';
 import './Footer.css';
+import styles from '../Component.module.css';
+
+
+const today = new Date();
 
 function Footer() {
     return (
@@ -16,13 +20,13 @@ function Footer() {
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <h6 class="text-uppercase font-weight-bold">Contact</h6>
                         <p>
-                        <br/>patrick dot allison dot us at icloud dot com
+                            patrick dot allison dot us at icloud dot com
                         </p>
                     </div>
                 </div>
-                <div class="footer-copyright text-center">© 2020 WxAlert</div> 
+                <hr className={styles.wxhrfooter}/>
+                <div class="footer-copyright text-center"><span>&#169;</span> {today.getFullYear()} WxAlert</div> 
             </div>
- 
         </div>
     );
 }
