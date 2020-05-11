@@ -9,13 +9,13 @@ import Caution from './Components/Caution/CautionIcons';
 import Legal from './Components/Legal/Legal';
 import Contact from './Components/Contact/Contact';
 import NotFound from './Components/NotFound/NotFound';
-import Nav from './Components/Navigation/Nav';
+import NavMenu from './Components/NavMenu/NavMenu';
 
 function App() {
   return (
     <div>
       <Router>
-        <Nav />
+        <NavMenu />
         <Switch>
           <Route exact path='/'>
             <Home />

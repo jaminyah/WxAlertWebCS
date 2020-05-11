@@ -1,0 +1,49 @@
+.Header {
+    display: grid;
+    grid-template-areas: "logo nav";
+    background: #0000ff;
+    margin-top: 1px;
+    padding: 10px;
+}
+
+.Nav {
+    grid-area: nav;
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    align-items: center;
+    justify-items: center;
+}
+
+.link-white {
+    color: white;
+}
+
+.link-yellow {
+    color: yellow;
+}
+
+.Burger {
+    display: none;
+    grid-area: burger;
+    justify-self: end;
+}
+
+.Burger :active {
+    transform: scale(1.2);
+}
+
+@media (max-width: 700px) {
+    .Header {
+        grid-template-areas: "logo burger" "nav nav";
+    }
+
+    .Nav {
+        grid-template-rows: repeat(4, auto);
+        grid-template-columns: none;
+        row-gap: 20px;
+    }
+
+    .Burger {
+        display: block;
+    }
+}

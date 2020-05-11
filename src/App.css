@@ -1,39 +1,3 @@
 .App {
   text-align: center;
 }
-
-
-
-/*
-ul {
-  list-style-type: none;
-  margin: 1px;
-  padding: 1px;
-  border: 2px solid #e7e7e8;
-  background-color: #8842d5;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-li {
-  float: left;
-  border-right: 2px solid white;
-}
-
-li a {
-  display: block;
-  padding: 15px 17px;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: #7300ff;
-}
-
-.active {
-  background-color: #dddddd;
-}
-*/
