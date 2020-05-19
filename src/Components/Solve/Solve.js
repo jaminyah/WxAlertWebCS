@@ -13,14 +13,14 @@ function Solve() {
 
             <h1>Solution Guide</h1>
             <p>
-                This guide provides solutions to correct an invalid temperature value of -999 &#176;F and to 
+                This guide provides solutions to correct an invalid temperature value of 999&#176;F and to 
                 manually schedule weather alert updates.
             </p>
             <p>
-                <h2>Issue: Temperature displayed is -999 &#176;F</h2>
+                <h2>Issue: Temperature displayed is 999&#176;F</h2>
                 From time to time, weather stations may not be active. This is evident as an invalid current temperature value of
-                -999 &#176;F displayed on the Current Weather view. Invalid temperature readings appear on
-                the Forecast View as -999.
+                999 &#176;F displayed on the Current Weather view. Invalid temperature readings appear on
+                the Forecast View as 999&#176;.
             </p>
             <p>
                 <h3>Solution: Select a different weather station</h3> 
