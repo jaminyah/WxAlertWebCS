@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../Component.module.css';
 import Footer from '../Footer/Footer';
 import {
-    Err999, AlertSchedule
+    Err999, AlertSchedule, WxStation
 } from '../../assets/images/solve';
 
 
@@ -11,7 +11,11 @@ function Solve() {
         <div>
         <div className={styles.container}>
 
-            <h1>Troubleshooting Guide</h1>
+            <h1>Solution Guide</h1>
+            <p>
+                This guide provides solutions to correct an invalid temperature value of -999 &#176;F and to 
+                manually schedule weather alert updates.
+            </p>
             <p>
                 <h2>Issue: Temperature displayed is -999 &#176;F</h2>
                 From time to time, weather stations may not be active. This is evident as an invalid current temperature value of
@@ -27,7 +31,7 @@ function Solve() {
             <figcaption className={styles.figcaption}>Figure 1 - Troubleshooting</figcaption>
             <br/>
            
-            <h3>Station Selection Steps</h3>
+            <h4>Station Selection Steps</h4>
             <p>
                 The steps described will follow the sequence outlined in Figure 1 - Troubleshooting.
                 <br/>
@@ -47,6 +51,9 @@ function Solve() {
                 <strong>Step 4. </strong>
                 Scroll up in the list of weather stations and make a new selection.
                 <br/>
+                <br/>
+                <img className={styles.wximage} src={WxStation} alt="weather station" />
+                <figcaption className={styles.figcaption}>Figure 2 - Selection</figcaption>
                 <br/>
                 <strong>Step 5. </strong>
                 Select the Forecast View tab.
@@ -78,7 +85,7 @@ function Solve() {
                 </ul>
             </p>
             <img className={styles.wximage} src={AlertSchedule} alt="set schedule" />
-            <figcaption className={styles.figcaption}>Figure 2 - Alert Scheduling</figcaption>
+            <figcaption className={styles.figcaption}>Figure 3 - Alert Scheduling</figcaption>
             <br/>
         </div>
         <Footer />

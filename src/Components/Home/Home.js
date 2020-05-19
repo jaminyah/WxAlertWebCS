@@ -3,7 +3,7 @@ import styles from '../Component.module.css';
 import Footer from '../Footer/Footer';
 import { Link } from 'react-router-dom';
 import {
-    Toolbar, Search, Current, Forecast, Diamond, TempRed, TempGreen, TempError 
+    Toolbar, Search, Current, Forecast, Diamond, TempRed, TempGreen, TempErr
 } from '../../assets/images/home';
 
 function Home() {
@@ -189,12 +189,12 @@ function Home() {
  
             <h3>Erroneous Reading</h3>
             <p>
-                Occasionally, a weather station will not be in service. When this occurs a temperature reading of -99 is presented. 
+                Occasionally, a weather station will not be in service. When this occurs a temperature reading of -999 is presented. 
                 The solution to this issue is to select an active weather station from the list of stations shown in the 
                 Station View. Station View can be selected from the App Settings tab. 
                 See <Link to="/solve">Solve </Link> for the troubleshooting guide.
             </p>
-            <img className={styles.wximage} src={TempError} alt="temperature error" />
+            <img className={styles.wximage} src={TempErr} alt="temperature error" />
             <figcaption className={styles.figcaption}>Figure 8 - Erroneous Temperature</figcaption> 
  
             <br/>
