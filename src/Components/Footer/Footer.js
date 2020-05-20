@@ -20,7 +20,7 @@ function Footer() {
                     <div class="col-lg-4 col-md-4 col-sm-12">
                         <h6 class="text-uppercase font-weight-bold">Contact</h6>
                         <p>
-                            patrick dot allison dot us at icloud dot com
+                            patrick dot allison.us at icloud dot com
                         </p>
                     </div>
                 </div>
