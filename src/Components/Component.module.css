@@ -4,7 +4,6 @@ h1 {
   padding-top: 10px;
 }
 
-
 blockquote {
   background: #00e1ff;
   border-left: 10px solid #ff00b2;
@@ -33,6 +32,20 @@ blockquote p {
     margin-right: auto;
   }
 
+  .wxbadge {
+    padding-top: 4px;
+    padding-right: 10px;
+    float: left;
+  }
+
+  .wxclear {
+    clear: both;
+  }
+
+  #wxdivider {
+    margin-top: 10px;
+  }
+
   .wxhrfooter {
     border-top: 1px solid white;
   }
@@ -46,16 +59,25 @@ blockquote p {
     .container{
       width: 750px;
     }
+    .wxbadge {
+      padding-bottom: 10px;
+    }
   }
   
   @media (min-width: 992px) {
     .container{
       width: 970px;
     }
+    .wxbadge {
+      padding-bottom: 10px;
+    }
   }
   
   @media (min-width: 1200px) {
     .container{
       width: 1170px;
+    }
+    .wxbadge {
+      padding-bottom: 10px;
     }
   }

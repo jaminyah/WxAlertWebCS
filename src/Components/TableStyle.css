@@ -3,7 +3,7 @@
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   border: 3px solid #ddd;
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-top: 8px;
   margin-bottom: 8px;
@@ -13,7 +13,6 @@
   background-color: bisque;
 }
   
-
 #wxtable-icons tr:nth-child(even){background-color: #f2f2f2;}
 
 #wxtable-icons th, td, #wxtable-icons {
@@ -22,7 +21,7 @@
 }
 
 #wxrow-icon {
-  width: 30%;
+  width: 40%;
 }
 
 #wxrow-desc {
