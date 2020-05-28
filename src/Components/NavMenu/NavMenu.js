@@ -57,7 +57,7 @@ function NavMenu () {
                         <span className="link-white">Legal</span></NavLink>
 
                     <NavLink activeStyle={{fontWeight: "bold", color: 'white'}} to="/contact">
-                        <span className="link-white">Contact</span></NavLink>
+                        <span className="link-white">Comments</span></NavLink>
                 </nav> 
             )}
 

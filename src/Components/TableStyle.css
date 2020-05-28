@@ -1,0 +1,30 @@
+#wxtable-icons {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 90%;
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+#wxtable-icons th {
+  background-color: bisque;
+}
+  
+
+#wxtable-icons tr:nth-child(even){background-color: #f2f2f2;}
+
+#wxtable-icons th, td, #wxtable-icons {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#wxrow-icon {
+  width: 30%;
+}
+
+#wxrow-desc {
+  width: 60%;
+}

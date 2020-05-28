@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../Component.module.css';
 import Footer from '../Footer/Footer';
-import './WxIcons.css';
+import '../TableStyle.css';
 import {
     Bkn, Blizzard, Dust, Few, FzRain, Haze, Ovc, RainShowersHi, RainShowers, RainSleet, RainSnow, Rain, SkyClear, Sleet,
     Smoke, SnowFzRain, SnowSleet, Snow, ThunderStormHi, ThunderStormSct, ThunderStorm, WindBroken, WindFew, WindOvc,
@@ -12,11 +12,13 @@ function WxIcons() {
 
     const header = [
         {col1: 'Icon', col2: 'Description'}
-    ]
+    ];
+    
     const headerFunction = h => <tr>
-                                    <th>{h.col1}</th>
-                                    <th>{h.col2}</th>
-                                 </tr>
+        <th id='wxrow-icon'>{h.col1}</th>
+        <th id='wxrow-desc'>{h.col2}</th>
+    </tr>;
+
     const tableHeader = header.map(headerFunction);
 
     const iconList = [
@@ -63,7 +65,7 @@ function WxIcons() {
                     WxAlert uses various weather icons to describe current and forecast weather conditions. Table 1 - Weather Icons, provides
                     a list of icons and their description.
                 </p>
-                <table id='wxicons'>
+                <table id='wxtable-icons'>
                     <thead>
                         {tableHeader}
                     </thead>

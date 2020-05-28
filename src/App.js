@@ -7,7 +7,7 @@ import WxIcons from './Components/Weather/WxIcons';
 import Alert from './Components/Alert/AlertIcons';
 import Caution from './Components/Caution/CautionIcons';
 import Legal from './Components/Legal/Legal';
-import Contact from './Components/Contact/Contact';
+import Contact from './Components/Comments/Comments';
 import NotFound from './Components/NotFound/NotFound';
 import NavMenu from './Components/NavMenu/NavMenu';
 

@@ -1,0 +1,12 @@
+export const AdvisCFlood = require('./advis_cflood.png');
+export const AdvisIceStrm = require('./advis_ice_storm.png');
+export const AdvisTsra = require('./advis_tsra.png');
+export const AdvisTypical = require('./alert_advis64.png');
+export const WarnTypical = require('./alert_warn64.png');
+export const WatchTypical = require('./alert_watch64.png');
+export const WarnHrdFrz = require('./warn_hard_frz.png');
+export const WarnLakeshoreFld = require('./warn_lakeshorefld.png');
+export const WarnRedFlag = require('./warn_red_flag.png');
+export const WatchAvalanche = require('./watch_avalanche.png');
+export const WatchFireWx = require('./watch_firewx.png');
+export const WatchHighWind = require('./watch_high_wind.png');
