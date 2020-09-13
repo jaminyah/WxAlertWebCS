@@ -73,36 +73,7 @@ func generateCaptchaHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	json.NewEncoder(w).Encode(body)
-
-	/*
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		body := map[string]interface{}{"message": "pong pong"}
-		json.NewEncoder(w).Encode(body)
-	*/
 }
-
-// base64Captcha verify http handler
-/*func captchaVerifyHandle(w http.ResponseWriter, r *http.Request) {
-
-	 //parse request parameters
-	 decoder := json.NewDecoder(r.Body)
-	 var postParameters configJsonBody
-	 err := decoder.Decode(&postParameters)
-	 if err != nil {
-		 log.Println(err)
-	 }
-	 defer r.Body.Close()
-	 //verify the captcha
-	 verifyResult := base64Captcha.VerifyCaptcha(postParameters.Id, postParameters.VerifyValue)
-
-	 //set json response
-	 w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	 body := map[string]interface{}{"code": "error", "data": "validation failed", "msg": "captcha failed"}
-	 if verifyResult {
-		 body = map[string]interface{}{"code": "success", "data": "validation verified", "msg": "captcha verified"}
-	 }
-	 json.NewEncoder(w).Encode(body)
- } */
 
 func main() {
 

@@ -1,26 +1,12 @@
 import React, { Component } from 'react';
-//import axios from'axios';
-/*
-class Captcha extends Component {
 
-    render() {
-        return (
-            <div>Captcha Image placeholder.</div>
-        );
-    }
-}
-
-export default Captcha;
-*/
 
 
 class Captcha extends Component {
 
     constructor(props) {
         super(props);
-        /*this.state = {
-            captchaImage: 'pending ...'
-        }*/
+        /*
         this.state = {
             form: {
                 ShowLineOptions: [],
@@ -60,24 +46,19 @@ class Captcha extends Component {
                 loading: false
             }
         }
+        */
+       this.state = {captchaImage: props.math}
     }
 
- 
-
-   assignCaptcha(captcha) {
-        this.setState({
-            form: {blob: captcha.data}
-        });
-    }
-
-    componentDidMount() {
-        console.log('Generating captcha');
+ /*
+   fetchCaptcha() {
+        console.log('Fetching captcha');
         var fetchData = {
             method: 'post',
             body: JSON.stringify(this.state.form),
             headers: new Headers()
         }
- 
+
         fetch('/api/getCaptcha', fetchData)
         .then(function(response){
             console.log(" fetch .then");
@@ -85,6 +66,7 @@ class Captcha extends Component {
         })
         .then(
             (result) => {
+                console.log(result.msg);
                 this.setState({
                     form: {blob: result.data}
                 })
@@ -94,12 +76,17 @@ class Captcha extends Component {
             console.log("fetch error: ")
             console.log(error);
         });
-
     }
+
+    componentDidMount() {
+        this.fetchCaptcha()
+    }
+    */
 
     render() {
        return (
-            <img src={this.state.form.blob} alt='captcha' />
+            /*<img src={this.state.form.blob} alt='captcha' />*/
+            <img src={this.state.captchaImage} alt='captcha' />
         );
     }
 }
