@@ -1,11 +1,15 @@
 import React from 'react';
+import { Avatar } from '../../assets/avatar';
+
 
 class CommentList extends React.Component {
     constructor(props) {
         super();
-
+        this.state = {
+            comments: []
+        }
     }
-
+    
     fetchCommentList() {
         console.log("Fetch comment list");
 
@@ -21,6 +25,9 @@ class CommentList extends React.Component {
                // this.setState({
                //     form: {blob: result.data}
                // })
+               this.setState((state) => {
+                   return {comments: result}
+               })
             }
         )
         .catch(function(error){
@@ -28,6 +35,9 @@ class CommentList extends React.Component {
             console.log(error);
         });
     }
+
+
+    /* Use map function to display list of comments */
 
     /* Reference: from original base code
     displayComments(json_data) {
@@ -54,9 +64,37 @@ class CommentList extends React.Component {
     }
 
     render() {
+        var imgStyle = {
+            float: "left",
+            margin: "0 12 0 0",
+            borderRadius: "50%",
+            backgroundColor: "#00d4ff",
+            boxShadow: "1 1 2 #000"
+        }
+
+        var nameStyle = {
+            padding: 8,
+            margin: 4
+        }
+
         return(
             <div>
                 <h2>Comment List</h2>
+                { this.state.comments.map((comment, i) =>
+                    (
+                        <div key={i}>
+                            <img style={imgStyle} src={Avatar} alt="avatar" />
+                            <br/>
+                            <div style={nameStyle}>
+                                <h6>{ comment.name }</h6>
+                            </div>
+                            <div className="comment-item">
+                                <em>{ comment.date }</em>
+                                <p>{ comment.comment }</p>
+                            </div>
+                        </div>
+                    )
+                )}
             </div>
         );
     }

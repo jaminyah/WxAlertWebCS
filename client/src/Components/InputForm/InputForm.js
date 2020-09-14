@@ -55,7 +55,7 @@ class InputForm extends React.Component {
         }
 
         fetch('/api/getCaptcha', fetchData)
-        .then(function(response){
+        .then(function(response) {
             console.log(" fetch .then");
             return response.json();
         })
@@ -112,7 +112,6 @@ class InputForm extends React.Component {
                         <div className="col-25"></div>
                         <div className="col-75">
                             <div id="captcha-img">
-                               {/*<CaptchaImage math={this.state.form.blob} />*/}
                                <img src={this.state.form.blob} alt='captcha' />
                             </div>
                             <input type="number" name="captcha-solution" id="captcha-solution" placeholder="Your math solution: " 
