@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.commentlist-container {
+   display: flex;
+   flex-direction: row;
+   padding: 0;
+   margin: 8px;
+   box-shadow: 2px 2px 2px gray;
+   border-radius: 4px;
+   overflow: hidden;
+}
+.box-orange {
+    background: orange;
+    height: 120px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-blue {
+    flex: 1; 
+    background: lightskyblue;
+    height: 120px;
+
+}
+
+.box-blue p {
+    padding: 10px;
+    font-style: italic;
+}
+
+#date {
+    font-style: italic;
+    color: whitesmoke;
+}
+
+#content {
+    padding: 4px;
+}
+
+#date {
+    padding: 0 4px 4px 4px;
+}
+
+#name {
+    padding: 4px 4px 1px 4px;
+}
+
+.box-orange > img {
+    background-color: #00d4ff;
+    box-shadow: 1px 1px 2px #000;
+    border-radius: 50%;
+}

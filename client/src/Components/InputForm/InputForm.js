@@ -88,7 +88,7 @@ class InputForm extends React.Component {
 
     render() {
         return (
-            <div className='container'>
+            <div className='input-container'>
                 <form action="" method="post" id="comment-form">
                     <div className="row">
                         <div className="col-25">

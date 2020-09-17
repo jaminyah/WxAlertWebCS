@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar } from '../../assets/avatar';
+import './CommentList.css';
 
 
 class CommentList extends React.Component {
@@ -37,67 +38,37 @@ class CommentList extends React.Component {
     }
 
 
-    /* Use map function to display list of comments */
-
-    /* Reference: from original base code
-    displayComments(json_data) {
-        console.log(json_data);
-        var comment = "";
-        var list = $("<ul>");
-    
-        for (var i = 0; i < json_data.length; i++) {
-            comment = "<div class='circle'><img src='./images/avatar.png'/>" +
-            "<h3>" + json_data[i]['name'] + "</h3>" +
-            json_data[i]['date'] +
-            "<p>" + json_data[i]['comment'] + "</p>" + "</div>";
-                
-            var item = $("<li>").html(comment);
-            list.append(item);
-        }
-        $("#comment-area").html(list);
-    }
-    */
-    
-
     componentDidMount() {
         this.fetchCommentList();
     }
 
     render() {
-        var imgStyle = {
-            float: "left",
-            margin: "0 12 0 0",
-            borderRadius: "50%",
-            backgroundColor: "#00d4ff",
-            boxShadow: "1 1 2 #000"
-        }
-
-        var nameStyle = {
-            padding: 8,
-            margin: 4
-        }
-
-        return(
+        return (
             <div>
-                <h2>Comment List</h2>
-                { this.state.comments.map((comment, i) =>
+            <h2>Comment List</h2>
+                { this.state.comments.map((posting, i) =>
                     (
-                        <div key={i}>
-                            <img style={imgStyle} src={Avatar} alt="avatar" />
-                            <br/>
-                            <div style={nameStyle}>
-                                <h6>{ comment.name }</h6>
+                        <div className="commentlist-container" key={i}>
+                            <div class="box-orange">
+                                <img src={Avatar} alt="avatar"/>
                             </div>
-                            <div className="comment-item">
-                                <em>{ comment.date }</em>
-                                <p>{ comment.comment }</p>
+                            <div class="box-blue">
+                                <div id="name">
+                                    { posting.name }
+                                </div>
+                                <div id="date">
+                                    { posting.date }
+                                </div>
+                                <div id="content">
+                                    { posting.comment }
+                                </div>
                             </div>
                         </div>
                     )
                 )}
             </div>
-        );
-    }
+        );  
+    }    
 }
 
 export default CommentList;
