@@ -113,6 +113,11 @@ input[type=number] {
     display: none;
 }
 
+.hideCaptcha {
+    transition: ease-in-out;
+    transition-duration: 1s;
+}
+
 .alert {
     background: burlywood;
     position: absolute;

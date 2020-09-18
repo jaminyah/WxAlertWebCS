@@ -143,24 +143,22 @@ class InputForm extends React.Component {
                             </textarea>
                         </div>
                     </div>
-                    <div className="row captcha-row"> 
-                        <div className="col-25"></div>
-                        <div className="col-75">
-                            <div id="captcha-img">
-                               <img src={this.state.form.blob} alt='captcha' />
-                            </div>
-                            <input type="number" name="captcha-solution" id="captcha-solution" placeholder="Your math solution: " 
-                                pattern="[0-9]*" inputMode="numeric" required />
-                            <div>
-                                { this.state.isVerified ? "" :
-                                    (
+                        { this.state.isVerified ? <div></div> :
+                            (
+                                <div className="row captcha-row" id="captcha-row">
+                                    <div className="col-25"></div>
+                                    <div className="col-75">
+                                        <div id="captcha-img">
+                                            <img src={this.state.form.blob} alt='captcha' />
+                                        </div>
+                                        <input type="number" name="captcha-solution" id="captcha-solution" placeholder="Your math solution: " 
+                                            pattern="[0-9]*" inputMode="numeric" required />
                                         <input type="button" className="captcha-verify" id="captcha-verify" 
-                                            onClick={this.verifyCaptcha.bind(this)} value="Verify Captcha" />
-                                    )
-                                }
-                            </div>
-                        </div>
-                    </div>
+                                                        onClick={this.verifyCaptcha.bind(this)} value="Verify Captcha" />
+                                    </div>
+                                </div>
+                            )
+                        }
                     <div className="row">
                         <div className="col-25"></div>
                         <div className="col-75">
@@ -168,12 +166,12 @@ class InputForm extends React.Component {
                                 <div className="message"></div>
                             </div>
                         </div>
-                        </div>
-                        <div className="row">
+                    </div>
+                    <div className="row">
                         <div className="col-25"></div>
                         <div className="col-75">
-                        { this.state.isVerified ? <input type="submit" id="publish" value="Publish" /> : ""}
-                    </div>
+                            { this.state.isVerified ? <input type="submit" id="publish" value="Publish" /> : ""}
+                        </div>
                     </div>
                 </form>
             </div>
