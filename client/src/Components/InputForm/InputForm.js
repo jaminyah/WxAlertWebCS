@@ -8,6 +8,8 @@ class InputForm extends React.Component {
         this.state = {
             isVerified: false,
             isLoading: false,
+            userName: "",
+            message: "",
             form: {
                 ShowLineOptions: [],
                 CaptchaType: "math",
@@ -44,7 +46,11 @@ class InputForm extends React.Component {
                 },
                 blob: ""
             }
-        }
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleMsgChange = this.handleMsgChange.bind(this);
+        this.verifyCaptcha = this.verifyCaptcha.bind(this);
     }
 
     fetchCaptcha() {
@@ -81,7 +87,7 @@ class InputForm extends React.Component {
         // contact server
         // if validated disable verify button + enable publish button
         // else fetch captcha wait for user input onClick
-        this.setState({
+       this.setState({
             form: {
                 VerifyValue: document.getElementById("captcha-solution").value
             }
@@ -103,7 +109,7 @@ class InputForm extends React.Component {
                 console.log(result.msg);
                if (result.code === 1) {
                    console.log('verify - ok');
-                   this.setState( {isVerified: true })
+                   this.setState( { isVerified: true })
                    /*document.getElementById("captcha-solution").value = null
                    document.getElementById("username").value = null
                    document.getElementById("message").value = null
@@ -121,17 +127,42 @@ class InputForm extends React.Component {
         this.fetchCaptcha()
     }
 
+    handleSubmit(event) {
+        console.log(this.state.userName);
+        console.log(this.state.form.VerifyValue);
+        console.log(this.state.message);
+        event.preventDefault();
+        alert('Form submitted! ' + this.state.userName);
+  
+    }
+
+    handleNameChange(event) {
+        this.setState({
+                userName: event.target.value
+            }
+        )
+    }
+
+    handleMsgChange(event) {
+        this.setState({
+                message: event.target.value
+            }
+        )
+    }
+
     render() {
         return (
             <div className='input-container'> 
-                <form action="" method="post" id="comment-form">
+                <form onSubmit={this.handleSubmit} method="post" id="comment-form">
                     <div className="row">
                         <div className="col-25">
                             <label htmlFor="name">Name:</label>
                         </div>
                         <div className="col-75">
                             <input type="text" name="username" id="username" placeholder="2 - 20 characters" pattern="[a-zA-Z][a-zA-Z-9-_\.]{1,20}" 
-                            required minLength="2" maxLength="20" />
+                            required minLength="2" maxLength="20" 
+                                value={this.state.userName} onChange={this.handleNameChange}
+                            />
                         </div>
                     </div>
                     <div className="row">
@@ -139,7 +170,8 @@ class InputForm extends React.Component {
                             <label htmlFor="msg">Message:</label>
                         </div>
                         <div className="col-75">
-                            <textarea name="message" id="message" pattern="[a-zA-Z0-9]+" required minLength="3" maxLength="140">
+                            <textarea name="message" id="message" pattern="[a-zA-Z0-9]+" required minLength="3" maxLength="140" 
+                                 value={this.state.message} onChange={this.handleMsgChange} >
                             </textarea>
                         </div>
                     </div>
@@ -154,7 +186,7 @@ class InputForm extends React.Component {
                                         <input type="number" name="captcha-solution" id="captcha-solution" placeholder="Your math solution: " 
                                             pattern="[0-9]*" inputMode="numeric" required />
                                         <input type="button" className="captcha-verify" id="captcha-verify" 
-                                                        onClick={this.verifyCaptcha.bind(this)} value="Verify Captcha" />
+                                                        onClick={this.verifyCaptcha} value="Verify Captcha" />
                                     </div>
                                 </div>
                             )
