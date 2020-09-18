@@ -18,11 +18,12 @@ import (
 	"github.com/mojocn/base64Captcha"
 )
 
-var database, db_err = sql.Open("sqlite3", "./wxalert.db")
+var database, dbErr = sql.Open("sqlite3", "./wxalert.db")
 var store = base64Captcha.DefaultMemStore
 
+// UserComment data structure
 type UserComment struct {
-	Id        int    `json:"id"`
+	ID        int    `json:"id"`
 	Name      string `json:"name"`
 	Message   string `json:"comment"`
 	Timestamp string `json:"date"`
@@ -75,10 +76,34 @@ func generateCaptchaHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(body)
 }
 
+// base64Captcha verify http handler
+func captchaVerifyHandler(w http.ResponseWriter, r *http.Request) {
+
+	//parse request json body
+	decoder := json.NewDecoder(r.Body)
+	var param configJsonBody
+	err := decoder.Decode(&param)
+	if err != nil {
+		log.Println(err)
+	}
+	defer r.Body.Close()
+	//verify the captcha
+	body := map[string]interface{}{"code": 0, "msg": "failed"}
+	if store.Verify(param.Id, param.VerifyValue, true) {
+		body = map[string]interface{}{"code": 1, "msg": "ok"}
+	}
+
+	//set json response
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+
+	json.NewEncoder(w).Encode(body)
+
+}
+
 func main() {
 
-	if db_err != nil {
-		log.Fatal(db_err)
+	if dbErr != nil {
+		log.Fatal(dbErr)
 	}
 	defer database.Close()
 
@@ -96,7 +121,7 @@ func main() {
 	http.HandleFunc("/api/getCaptcha", generateCaptchaHandler)
 
 	//api for verify captcha
-	//http.HandleFunc("/api/verifyCaptcha", captchaVerifyHandle)
+	http.HandleFunc("/api/verifyCaptcha", captchaVerifyHandler)
 
 	fmt.Printf("Starting HTTP server...\n")
 	if serverErr := http.ListenAndServe(":8088", nil); serverErr != nil {

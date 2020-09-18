@@ -49,10 +49,10 @@ class CommentList extends React.Component {
                 { this.state.comments.map((posting, i) =>
                     (
                         <div className="commentlist-container" key={i}>
-                            <div class="box-orange">
+                            <div className="box-orange">
                                 <img src={Avatar} alt="avatar"/>
                             </div>
-                            <div class="box-blue">
+                            <div className="box-blue">
                                 <div id="name">
                                     { posting.name }
                                 </div>

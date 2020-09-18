@@ -6,6 +6,8 @@ class InputForm extends React.Component {
     constructor(props) {
         super();
         this.state = {
+            isVerified: false,
+            isLoading: false,
             form: {
                 ShowLineOptions: [],
                 CaptchaType: "math",
@@ -40,8 +42,7 @@ class InputForm extends React.Component {
                     MaxSkew: 0.7,
                     DotCount: 80
                 },
-                blob: "",
-                loading: false
+                blob: ""
             }
         }
     }
@@ -80,6 +81,40 @@ class InputForm extends React.Component {
         // contact server
         // if validated disable verify button + enable publish button
         // else fetch captcha wait for user input onClick
+        this.setState({
+            form: {
+                VerifyValue: document.getElementById("captcha-solution").value
+            }
+        })
+
+        var fetchData = {
+            method: 'post',
+            body: JSON.stringify(this.state.form),
+            headers: new Headers()
+        }
+
+        fetch('/api/verifyCaptcha', fetchData)
+        .then(function(response) {
+            console.log(" fetch .then");
+            return response.json();
+        })
+        .then(
+            (result) => {
+                console.log(result.msg);
+               if (result.code === 1) {
+                   console.log('verify - ok');
+                   this.setState( {isVerified: true })
+                   /*document.getElementById("captcha-solution").value = null
+                   document.getElementById("username").value = null
+                   document.getElementById("message").value = null
+                   */
+               }
+            }
+        )
+        .catch(function(error){
+            console.log("fetch error: ")
+            console.log(error);
+        });    
     }
 
     componentDidMount() {
@@ -88,7 +123,7 @@ class InputForm extends React.Component {
 
     render() {
         return (
-            <div className='input-container'>
+            <div className='input-container'> 
                 <form action="" method="post" id="comment-form">
                     <div className="row">
                         <div className="col-25">
@@ -116,7 +151,14 @@ class InputForm extends React.Component {
                             </div>
                             <input type="number" name="captcha-solution" id="captcha-solution" placeholder="Your math solution: " 
                                 pattern="[0-9]*" inputMode="numeric" required />
-                            <input type="button" className="captcha-verify" id="captcha-verify" onClick={this.verifyCaptcha.bind(this)} value="Verify Captcha" />
+                            <div>
+                                { this.state.isVerified ? "" :
+                                    (
+                                        <input type="button" className="captcha-verify" id="captcha-verify" 
+                                            onClick={this.verifyCaptcha.bind(this)} value="Verify Captcha" />
+                                    )
+                                }
+                            </div>
                         </div>
                     </div>
                     <div className="row">
@@ -130,7 +172,7 @@ class InputForm extends React.Component {
                         <div className="row">
                         <div className="col-25"></div>
                         <div className="col-75">
-                        <input type="submit" id="publish" value="Publish" />
+                        { this.state.isVerified ? <input type="submit" id="publish" value="Publish" /> : ""}
                     </div>
                     </div>
                 </form>

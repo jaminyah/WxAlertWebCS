@@ -97,11 +97,9 @@ input[type=number] {
     float: right;
 }
 
-.captcha-img {
-    cursor: pointer;
-    position: relative;
-    border: 1px solid chartreuse;
-    box-shadow: 0 0 6px #cac6c6;
+#captcha-img {
+    margin: 2px;
+    height: 40px;
 }
 
 /* Clear floats after the columns */

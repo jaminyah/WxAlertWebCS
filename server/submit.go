@@ -4,13 +4,13 @@ package main
 
 import (
 	//"fmt"
-	"net/http"
 	"encoding/json"
-    "time"
+	"net/http"
+	"time"
 )
 
 func submitAjax(w http.ResponseWriter, r *http.Request) {
-	
+
 	//fmt.Println("Received ajax data.")
 
 	// Invoke ParseForm before reading form values
@@ -26,41 +26,40 @@ func submitAjax(w http.ResponseWriter, r *http.Request) {
 	// Format current time
 	now := time.Now()
 	//fmt.Println(now.Format("Jan 2, 2006 - 3:04 pm MST"))
-	var now_time string = now.Format("Jan 2, 2006 - 3:04 pm MST")
+	var nowTime string = now.Format("Jan 2, 2006")
 
 	// Client data received
-	user_name := r.FormValue("username")
-	user_message := r.FormValue("message")
-	
+	userName := r.FormValue("username")
+	userMessage := r.FormValue("message")
+
 	// Insert into database
 	statement, _ := database.Prepare("INSERT INTO comments (username, comment, date) VALUES (?, ?, ?)")
-	statement.Exec(user_name, user_message, now_time)
+	statement.Exec(userName, userMessage, nowTime)
 
 	// Read database
 	rows, _ := database.Query("SELECT id, username, comment, date FROM comments ORDER BY id DESC LIMIT 0, 50")
 
-	var db_id int
-	var db_name string
-	var db_message string
-	var db_timestamp string
-	var user_comment UserComment
-	var user_comments []UserComment
+	var dbID int
+	var dbName string
+	var dbMessage string
+	var dbTimestamp string
+	var userComment UserComment
+	var userComments []UserComment
 
 	for rows.Next() {
-		rows.Scan(&db_id, &db_name, &db_message, &db_timestamp)
-	
-		user_comment.Id = db_id
-		user_comment.Name = db_name
-		user_comment.Message = db_message
-		user_comment.Timestamp = db_timestamp
-		user_comments = append(user_comments, user_comment)
+		rows.Scan(&dbID, &dbName, &dbMessage, &dbTimestamp)
+
+		userComment.ID = dbID
+		userComment.Name = dbName
+		userComment.Message = dbMessage
+		userComment.Timestamp = dbTimestamp
+		userComments = append(userComments, userComment)
 	}
 
 	defer rows.Close()
 
-	json_str, _ := json.Marshal(user_comments)
-	//fmt.Printf("%s\n", json_str)
-	
+	jsonStr, _ := json.Marshal(userComments)
+
 	// Send back data to client
-	w.Write(json_str)
- }
+	w.Write(jsonStr)
+}
