@@ -1,3 +1,8 @@
+/**
+ * changeHandler()
+ * Reference: https://stackoverflow.com/questions/47012169/a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-erro
+ */
+
 import React from 'react';
 import '../InputForm/InputForm.css';
 
@@ -8,8 +13,10 @@ class InputForm extends React.Component {
         this.state = {
             isVerified: false,
             isLoading: false,
-            userName: "",
-            message: "",
+            comment: {
+                username: '',
+                message: ''
+            },
             form: {
                 ShowLineOptions: [],
                 CaptchaType: "math",
@@ -48,9 +55,8 @@ class InputForm extends React.Component {
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleNameChange = this.handleNameChange.bind(this);
-        this.handleMsgChange = this.handleMsgChange.bind(this);
         this.verifyCaptcha = this.verifyCaptcha.bind(this);
+        this.changeHandler = this.changeHandler.bind(this);
     }
 
     fetchCaptcha() {
@@ -128,27 +134,22 @@ class InputForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.userName);
-        console.log(this.state.form.VerifyValue);
-        console.log(this.state.message);
+        console.log(this.state.comment.username);
+        console.log(this.state.comment.message);
         event.preventDefault();
-        alert('Form submitted! ' + this.state.userName);
+        alert('Form submitted! ');
   
     }
 
-    handleNameChange(event) {
+    changeHandler = event => {
         this.setState({
-                userName: event.target.value
+            comment: {
+                ...this.state.comment,
+                [event.target.name]: event.target.value
             }
-        )
+        })
     }
 
-    handleMsgChange(event) {
-        this.setState({
-                message: event.target.value
-            }
-        )
-    }
 
     render() {
         return (
@@ -160,9 +161,7 @@ class InputForm extends React.Component {
                         </div>
                         <div className="col-75">
                             <input type="text" name="username" id="username" placeholder="2 - 20 characters" pattern="[a-zA-Z][a-zA-Z-9-_\.]{1,20}" 
-                            required minLength="2" maxLength="20" 
-                                value={this.state.userName} onChange={this.handleNameChange}
-                            />
+                            required minLength="2" maxLength="20" value={this.state.comment.username} onChange={this.changeHandler} />
                         </div>
                     </div>
                     <div className="row">
@@ -171,7 +170,7 @@ class InputForm extends React.Component {
                         </div>
                         <div className="col-75">
                             <textarea name="message" id="message" pattern="[a-zA-Z0-9]+" required minLength="3" maxLength="140" 
-                                 value={this.state.message} onChange={this.handleMsgChange} >
+                                 value={this.state.comment.message} onChange={this.changeHandler} >
                             </textarea>
                         </div>
                     </div>
