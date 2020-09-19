@@ -93,11 +93,12 @@ class InputForm extends React.Component {
         // contact server
         // if validated disable verify button + enable publish button
         // else fetch captcha wait for user input onClick
-       this.setState({
+      /* this.setState({
             form: {
                 VerifyValue: document.getElementById("captcha-solution").value
             }
         })
+        */
 
         var fetchData = {
             method: 'post',
@@ -116,10 +117,6 @@ class InputForm extends React.Component {
                if (result.code === 1) {
                    console.log('verify - ok');
                    this.setState( { isVerified: true })
-                   /*document.getElementById("captcha-solution").value = null
-                   document.getElementById("username").value = null
-                   document.getElementById("message").value = null
-                   */
                }
             }
         )
@@ -137,7 +134,29 @@ class InputForm extends React.Component {
         console.log(this.state.comment.username);
         console.log(this.state.comment.message);
         event.preventDefault();
-        alert('Form submitted! ');
+
+        var commentData = {
+            method: 'post',
+            body: JSON.stringify(this.state.comment),
+            headers: new Headers()
+        }
+
+        fetch('/submit', commentData)
+        .then(function(response) {
+            console.log(" fetch .then");
+            return response.json();
+        })
+        .then(
+            (comments) => {
+                console.log(comments);
+                this.refreshPage()
+               // this.fetchCaptcha()              
+            }
+        )
+        .catch(function(error){
+            console.log("fetch error: ")
+            console.log(error);
+        });    
   
     }
 
@@ -150,6 +169,16 @@ class InputForm extends React.Component {
         })
     }
 
+    refreshPage() {
+        this.setState( { isVerified: false})
+        this.setState( { isLoading: false})
+        this.setState({
+            comment: {
+                username: '',
+                message: ''
+            }
+        })
+    }
 
     render() {
         return (
@@ -201,7 +230,7 @@ class InputForm extends React.Component {
                     <div className="row">
                         <div className="col-25"></div>
                         <div className="col-75">
-                            { this.state.isVerified ? <input type="submit" id="publish" value="Publish" /> : ""}
+                            { this.state.isVerified ? <input type="submit" id="publish" value="Publish" /> : <div></div>}
                         </div>
                     </div>
                 </form>

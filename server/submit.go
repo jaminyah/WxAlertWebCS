@@ -3,34 +3,51 @@
 package main
 
 import (
-	//"fmt"
 	"encoding/json"
+	"fmt"
+	"log"
 	"net/http"
 	"time"
 )
+
+// FormData receives front-end data
+type FormData struct {
+	Username string `json:"username"`
+	Message  string `json:"message"`
+}
 
 func submitAjax(w http.ResponseWriter, r *http.Request) {
 
 	//fmt.Println("Received ajax data.")
 
 	// Invoke ParseForm before reading form values
-	r.ParseForm()
-	//for key, value := range r.Form {
-	//	fmt.Printf("%s: %s\n", key, value)
-	//}
-
-	// Acknowledge receiving the data
-	//fmt.Printf("User name: %s\n", r.FormValue("username"))
-	//fmt.Printf("Message body: %s\n", r.FormValue("message"))
+	//r.ParseForm()  Sept 19, 2020
 
 	// Format current time
 	now := time.Now()
 	//fmt.Println(now.Format("Jan 2, 2006 - 3:04 pm MST"))
 	var nowTime string = now.Format("Jan 2, 2006")
 
-	// Client data received
-	userName := r.FormValue("username")
-	userMessage := r.FormValue("message")
+	// Client data received - Sept 19, 2020
+	// userName := r.FormValue("username")
+	//	userMessage := r.FormValue("message")
+
+	//parse request json body
+	decoder := json.NewDecoder(r.Body)
+	var param FormData
+	err := decoder.Decode(&param)
+	if err != nil {
+		log.Println(err)
+	}
+	defer r.Body.Close()
+
+	userName := param.Username
+	userMessage := param.Message
+
+	// Acknowledge receiving the data
+	fmt.Printf("User name: %s\n", userName)
+	fmt.Printf("Message body: %s\n", userMessage)
+	fmt.Printf("Timestamp: %s\n", now)
 
 	// Insert into database
 	statement, _ := database.Prepare("INSERT INTO comments (username, comment, date) VALUES (?, ?, ?)")
