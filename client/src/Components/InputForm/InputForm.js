@@ -5,6 +5,7 @@
 
 import React from 'react';
 import '../InputForm/InputForm.css';
+import CommentList from '../CommentList/CommentList';
 
 class InputForm extends React.Component {
 
@@ -13,6 +14,7 @@ class InputForm extends React.Component {
         this.state = {
             isVerified: false,
             isLoading: false,
+            isPublished: false,
             comment: {
                 username: '',
                 message: ''
@@ -67,6 +69,7 @@ class InputForm extends React.Component {
             headers: new Headers()
         }
 
+
         fetch('/api/getCaptcha', fetchData)
         .then(function(response) {
             console.log(" fetch .then");
@@ -116,7 +119,8 @@ class InputForm extends React.Component {
                 console.log(result.msg);
                if (result.code === 1) {
                    console.log('verify - ok');
-                   this.setState( { isVerified: true })
+                   this.setState({ isVerified: true })
+                   this.setState({ isPublished: false })
                }
             }
         )
@@ -127,9 +131,17 @@ class InputForm extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchCaptcha()
+        this.fetchCaptcha();
     }
-
+/*
+    componentDidUpdate(prevState) {
+        if (this.state.isPublished !== prevState.isPublished) {
+            if (this.state.isPublished === true) {
+                this.fetchCaptcha()
+            }
+        }
+    }
+*/
     handleSubmit(event) {
         console.log(this.state.comment.username);
         console.log(this.state.comment.message);
@@ -148,9 +160,8 @@ class InputForm extends React.Component {
         })
         .then(
             (comments) => {
-                console.log(comments);
-                this.refreshPage()
-               // this.fetchCaptcha()              
+                //console.log(comments);
+                this.refreshPage()        
             }
         )
         .catch(function(error){
@@ -170,8 +181,9 @@ class InputForm extends React.Component {
     }
 
     refreshPage() {
-        this.setState( { isVerified: false})
-        this.setState( { isLoading: false})
+        this.setState( { isVerified: false })
+        this.setState( { isLoading: false })
+        this.setState({ isPublished: true })
         this.setState({
             comment: {
                 username: '',
@@ -234,6 +246,7 @@ class InputForm extends React.Component {
                         </div>
                     </div>
                 </form>
+                <CommentList isUpdated={this.state.isPublished} />
             </div>
         );
     }        

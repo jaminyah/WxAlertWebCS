@@ -7,7 +7,8 @@ class CommentList extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            comments: []
+            comments: [],
+            isUpdate: false
         }
     }
     
@@ -21,7 +22,7 @@ class CommentList extends React.Component {
         })
         .then(
             (result) => {
-                console.log(result);
+               // console.log(result);
                // console.log(result.data);
                // this.setState({
                //     form: {blob: result.data}
@@ -40,6 +41,15 @@ class CommentList extends React.Component {
 
     componentDidMount() {
         this.fetchCommentList();
+    }
+
+   componentDidUpdate(prevState) {
+        if (this.props.isUpdated !== prevState.isUpdated) {
+            this.setState({isUpdated: this.props.isUpdated})
+            if (this.props.isUpdated === true) {
+                this.fetchCommentList()
+            }
+        }
     }
 
     render() {
