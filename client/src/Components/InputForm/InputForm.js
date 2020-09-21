@@ -80,7 +80,9 @@ class InputForm extends React.Component {
                 console.log(result.msg);
                // console.log(result.data);
                 this.setState({
-                    form: {blob: result.data}
+                    form: {
+                        Id: result.captchaId,
+                        blob: result.data}
                 })
             }
         )
@@ -161,7 +163,7 @@ class InputForm extends React.Component {
         .then(
             (comments) => {
                 //console.log(comments);
-                this.refreshPage()        
+                this.resetState()        
             }
         )
         .catch(function(error){
@@ -180,7 +182,7 @@ class InputForm extends React.Component {
         })
     }
 
-    refreshPage() {
+    resetState() {
         this.setState( { isVerified: false })
         this.setState( { isLoading: false })
         this.setState({ isPublished: true })
@@ -188,6 +190,10 @@ class InputForm extends React.Component {
             comment: {
                 username: '',
                 message: ''
+            },
+            form: {
+                Id: '',
+                VerifyValue: ''
             }
         })
     }
