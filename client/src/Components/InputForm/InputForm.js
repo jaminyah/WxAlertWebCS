@@ -123,7 +123,7 @@ class InputForm extends React.Component {
                    console.log('verify - ok');
                    this.setState({ isVerified: true })
                    this.setState({ isPublished: false })
-               }
+               } 
             }
         )
         .catch(function(error){
@@ -178,6 +178,10 @@ class InputForm extends React.Component {
             comment: {
                 ...this.state.comment,
                 [event.target.name]: event.target.value
+            },
+            form: {
+                ...this.state.form,
+                [event.target.name]: event.target.value
             }
         })
     }
@@ -193,7 +197,8 @@ class InputForm extends React.Component {
             },
             form: {
                 Id: '',
-                VerifyValue: ''
+                VerifyValue: '',
+                blob: ""
             }
         })
     }
@@ -229,8 +234,10 @@ class InputForm extends React.Component {
                                         <div id="captcha-img">
                                             <img src={this.state.form.blob} alt='captcha' />
                                         </div>
-                                        <input type="number" name="captcha-solution" id="captcha-solution" placeholder="Your math solution: " 
-                                            pattern="[0-9]*" inputMode="numeric" required />
+                                        <input type="number" name="VerifyValue" id="VerifyValue" placeholder="Your math solution: " 
+                                            pattern="[0-9]*" inputMode="numeric" required value={this.state.form.VerifyValue || ''} 
+                                                onChange={this.changeHandler} />
+
                                         <input type="button" className="captcha-verify" id="captcha-verify" 
                                                         onClick={this.verifyCaptcha} value="Verify Captcha" />
                                     </div>
