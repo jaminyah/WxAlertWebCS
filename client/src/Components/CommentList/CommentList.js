@@ -9,6 +9,9 @@ class CommentList extends React.Component {
         this.state = {
             comments: [],
             isUpdate: false
+            /*,
+            getCaptcha: props.getCaptcha        // Update
+            */
         }
     }
     
@@ -46,8 +49,10 @@ class CommentList extends React.Component {
    componentDidUpdate(prevState) {
         if (this.props.isUpdated !== prevState.isUpdated) {
             this.setState({isUpdated: this.props.isUpdated})
+            this.setState({ getCaptcha: this.props.getCaptcha })
             if (this.props.isUpdated === true) {
-                this.fetchCommentList()
+                this.fetchCommentList();
+                //this.state.getCaptcha();
             }
         }
     }
