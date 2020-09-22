@@ -73,26 +73,12 @@ func generateCaptchaHandler(w http.ResponseWriter, r *http.Request) {
 		driver = param.DriverDigit
 	}
 
-	fmt.Println("Stage 3 - no error")
-
 	c := base64Captcha.NewCaptcha(driver, store)
-
-	fmt.Println("Stage 3.1 - no error")
-
 	id, b64s, err := c.Generate()
-
-	fmt.Println("Stage 3.2 - no error")
-
 	body := map[string]interface{}{"code": 1, "data": b64s, "captchaId": id, "msg": "success"}
-
-	fmt.Println("Stage 3.3 - no error")
-
 	if err != nil {
 		body = map[string]interface{}{"code": 0, "msg": err.Error()}
 	}
-
-	fmt.Println("Stage 4 - no error")
-
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	json.NewEncoder(w).Encode(body)
 }
@@ -131,12 +117,9 @@ func main() {
 	statement, _ := database.Prepare("CREATE TABLE IF NOT EXISTS comments (id INTEGER PRIMARY KEY, username TEXT, comment TEXT, date TEXT)")
 	statement.Exec()
 
-	//http.Handle("/", http.FileServer(http.Dir("static")))
-	//http.Handle("/", http.FileServer(rice.MustFindBox("static").HTTPBox()))
+	http.HandleFunc("/api/submit", submitAjax)
 
-	http.HandleFunc("/submit", submitAjax)
-
-	http.HandleFunc("/comments", fetchComments)
+	http.HandleFunc("/api/comments", fetchComments)
 
 	//api for creating captcha
 	http.HandleFunc("/api/getCaptcha", generateCaptchaHandler)

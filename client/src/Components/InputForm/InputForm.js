@@ -60,32 +60,20 @@ class InputForm extends React.Component {
         this.verifyCaptcha = this.verifyCaptcha.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
         this.fetchCaptcha = this.fetchCaptcha.bind(this);
-
-        this.sayHello = this.sayHello.bind(this);      // DEBUG
         this.initialState = { ...this.state }
     }
 
     fetchCaptcha() {
         console.log('Fetching captcha');
 
-      // var opt = 0;
         var fetchData = {
             method: 'post',
             body: JSON.stringify(this.state.form),
-            //headers: new Headers()
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
               }
         };
 
-       /* this.setState({
-            form: {
-                isLoading: true,
-               // DriverMath: { ShowLineOptions: opt }
-            }
-        });
-        */
- 
         fetch('/api/getCaptcha', fetchData)
         .then(function(response) {
             console.log("/api/getCaptcha - response");
@@ -94,7 +82,6 @@ class InputForm extends React.Component {
         .then(
             (result) => {
                 console.log(result.msg);
-               // console.log(result.data);
                 this.setState({
                     form: {
                         Id: result.captchaId,
@@ -109,23 +96,13 @@ class InputForm extends React.Component {
         });
     }
 
-    /* TODO */
+ 
     verifyCaptcha() {
         console.log('Verify Captcha');
-        // contact server
-        // if validated disable verify button + enable publish button
-        // else fetch captcha wait for user input onClick
-      /* this.setState({
-            form: {
-                VerifyValue: document.getElementById("captcha-solution").value
-            }
-        })
-        */
-
+ 
         var fetchData = {
             method: 'post',
             body: JSON.stringify(this.state.form),
-            //headers: new Headers()
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
               }
@@ -143,7 +120,11 @@ class InputForm extends React.Component {
                    console.log('verify - ok');
                    this.setState({ isVerified: true });
                    this.setState({ isPublished: false });
-               } 
+               } else {
+                //this.setState(this.initialState);
+                this.resetCaptchaState();
+                this.fetchCaptcha();      
+               }
             }
         )
         .catch(function(error){
@@ -156,14 +137,6 @@ class InputForm extends React.Component {
         this.fetchCaptcha();
     }
 
-    /*componentDidUpdate(prevState) {
-       // if (this.state.isPublished !== prevState.isPublished) {
-            if (this.state.isPublished === true) {
-
-            }
-       // }
-    }*/
-
     handleSubmit(event) {
         console.log(this.state.comment.username);
         console.log(this.state.comment.message);
@@ -175,15 +148,13 @@ class InputForm extends React.Component {
             headers: new Headers()
         }
 
-        fetch('/submit', commentData)
+        fetch('/api/submit', commentData)
         .then(function(response) {
             console.log(" fetch .then");
             return response.json();
         })
         .then(
             (comments) => {
-                //console.log(comments);
-               // this.resetState();
                 this.setState(this.initialState);
                 this.fetchCaptcha();      
                 this.setState({ isPublished: true });  
@@ -209,26 +180,16 @@ class InputForm extends React.Component {
         })
     }
 
-    resetState() {
-        this.setState( { isVerified: false });
-        this.setState( { isLoading: false });
-        this.setState({ isPublished: true });
+    resetCaptchaState() {
+        const name = this.state.comment.username;
+        const comment = this.state.comment.message;
+        this.setState(this.initialState);
         this.setState({
             comment: {
-                username: '',
-                message: ''
-            },
-           form: {
-                Id: '',
-                VerifyValue: '',
-                blob: "",
-                CaptchaType: "math"
+                username: name,
+                message: comment
             }
-        });
-    }
-
-    sayHello() {
-        alert('Parent says Hello!');
+        })
     }
 
     render() {

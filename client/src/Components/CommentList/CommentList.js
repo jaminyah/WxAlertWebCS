@@ -9,27 +9,19 @@ class CommentList extends React.Component {
         this.state = {
             comments: [],
             isUpdate: false
-            /*,
-            getCaptcha: props.getCaptcha        // Update
-            */
         }
     }
     
     fetchCommentList() {
         console.log("Fetch comment list");
 
-        fetch('/comments')
+        fetch('/api/comments')
         .then(function(response){
             console.log(" fetch .then");
             return response.json();
         })
         .then(
             (result) => {
-               // console.log(result);
-               // console.log(result.data);
-               // this.setState({
-               //     form: {blob: result.data}
-               // })
                this.setState((state) => {
                    return {comments: result}
                })
@@ -52,7 +44,6 @@ class CommentList extends React.Component {
             this.setState({ getCaptcha: this.props.getCaptcha })
             if (this.props.isUpdated === true) {
                 this.fetchCommentList();
-                //this.state.getCaptcha();
             }
         }
     }
