@@ -121,7 +121,6 @@ class InputForm extends React.Component {
                    this.setState({ isVerified: true });
                    this.setState({ isPublished: false });
                } else {
-                //this.setState(this.initialState);
                 this.resetCaptchaState();
                 this.fetchCaptcha();      
                }
