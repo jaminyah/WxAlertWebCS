@@ -10,10 +10,11 @@ import {
 function Alert() {
 
     const header = [
-        {col1: 'Icon', col2: 'Description'}
+        {id: 1, col1: 'Icon', col2: 'Description'}
     ];
 
-    const headerFunction = h => <tr>
+    const headerFunction = h => 
+    <tr key={h.id}>
         <th id='wxrow-icon'>{h.col1}</th>
         <th id='wxrow-desc'>{h.col2}</th>
     </tr>;

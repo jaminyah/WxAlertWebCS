@@ -6,6 +6,7 @@
 import React from 'react';
 import '../InputForm/InputForm.css';
 import CommentList from '../CommentList/CommentList';
+import { Ellipsis } from 'react-css-spinners';
 
 class InputForm extends React.Component {
 
@@ -73,6 +74,8 @@ class InputForm extends React.Component {
                 'Content-Type': 'application/json;charset=utf-8'
               }
         };
+
+        this.setState({ form: { isLoading: true }})
 
         fetch('/api/getCaptcha', fetchData)
         .then(function(response) {
@@ -219,9 +222,11 @@ class InputForm extends React.Component {
                                 <div className="row captcha-row" id="captcha-row">
                                     <div className="col-25"></div>
                                     <div className="col-75">
-                                        <div id="captcha-img">
-                                            <img src={this.state.form.blob} alt='' onClick={this.verifyCaptcha} />
-                                        </div>
+                                        { this.state.isLoading ? <Ellipsis color="#be97e8" size={32} /> : 
+                                            <div id="captcha-img">
+                                                <img src={this.state.form.blob} alt='' onClick={this.verifyCaptcha} />
+                                            </div>
+                                        }
                                         <input type="number" name="VerifyValue" id="VerifyValue" placeholder="Your math solution: " 
                                             pattern="[0-9]*" inputMode="numeric" required value={this.state.form.VerifyValue || ''} 
                                                 onChange={this.changeHandler} />

@@ -3,8 +3,8 @@
 .input-container {
     margin-right: auto;
     margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 4px;
+    padding-left: 4px;
     /* for edge cases: */
     width: 100%;
     max-width: 100%;

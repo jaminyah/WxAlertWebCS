@@ -7,7 +7,7 @@ function Legal() {
         <div>
             <div  className={styles.container}>
                 <h1 >Privacy Policy</h1>
-                <p>This document outlines the privacy policy of the WxAlert weather application, hereafter referred to 
+                This document outlines the privacy policy of the WxAlert weather application, hereafter referred to 
                      "the app". During the development of the app, every effort was made to protect user data and respect 
                      the privacy of its users.
                     The following privacy issues are discussed:
@@ -17,7 +17,6 @@ function Legal() {
                         <li>Data Usage and Sharing</li>
                         <li>Data Collection and Storage</li>
                     </ol>
-                </p>
                 <h2>Permissions Requested</h2>
                     <li>User Location</li>
                     <li>Local Notifications</li>

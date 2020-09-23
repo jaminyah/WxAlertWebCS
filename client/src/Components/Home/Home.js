@@ -52,17 +52,15 @@ function Home() {
             </p>
 
             <h2>User Interface</h2>
-            <p>
                 Four tabs are available to navigate through various app features such as search, forecast, settings, 
                 and user guide. Figure 1 - App Toolbar shows each tab icon. 
 
-                <ul>
-                    <li>City Search: Current weather and forecast data begins by searching for a city location.</li> 
-                    <li>Weather Forecast: Weather forecast data for several days may include current alerts.</li> 
-                    <li>App Settings: Allows for selection of a previously searched city.</li> 
-                    <li>User Guide: Provides a descripton of various app features.</li>
-                </ul>
-            </p>
+            <ul>
+                <li>City Search: Current weather and forecast data begins by searching for a city location.</li> 
+                <li>Weather Forecast: Weather forecast data for several days may include current alerts.</li> 
+                <li>App Settings: Allows for selection of a previously searched city.</li> 
+                <li>User Guide: Provides a descripton of various app features.</li>
+            </ul>
             <blockquote>
                 <p>
                     At first launch, only the City Search tab is enabled. When the first city search is performed, all other 
@@ -136,16 +134,14 @@ function Home() {
  
  
             <h2>Forecast View</h2>
-            <p>
                 Forecast View consist of several data sections integrated into one display view.
-                <ul>
-                    <li>Scrollable Alert List</li>
-                    <li>Search City Name</li>
-                    <li>Scrollable Forecast list</li>
-                    <li>Detailed Alert Icon</li>
-                    <li>Current Temperature</li>
-                </ul>
-            </p>
+            <ul>
+                <li>Scrollable Alert List</li>
+                <li>Search City Name</li>
+                <li>Scrollable Forecast list</li>
+                <li>Detailed Alert Icon</li>
+                <li>Current Temperature</li>
+            </ul>
             <img className={styles.wximage} src={Forecast} alt="forecast weather" />
             <figcaption className={styles.figcaption}>Figure 4 - Forecast View</figcaption> 
     

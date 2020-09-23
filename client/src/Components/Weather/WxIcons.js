@@ -11,13 +11,14 @@ import {
 function WxIcons() {
 
     const header = [
-        {col1: 'Icon', col2: 'Description'}
+        {id: 1, col1: 'Icon', col2: 'Description'}
     ];
     
-    const headerFunction = h => <tr>
-        <th id='wxrow-icon'>{h.col1}</th>
-        <th id='wxrow-desc'>{h.col2}</th>
-    </tr>;
+    const headerFunction = h =>
+        <tr key={h.id}>
+            <th id='wxrow-icon'>{h.col1}</th>
+            <th id='wxrow-desc'>{h.col2}</th>
+        </tr>
 
     const tableHeader = header.map(headerFunction);
 
@@ -44,14 +45,14 @@ function WxIcons() {
         {id: 20, image: <img src={ThunderStormSct} alt='tstorm sct' />, description: 'Thunderstorm, scattered'},
         {id: 21, image: <img src={ThunderStorm} alt='tstorm' />, description: 'Thunderstorm'},
         {id: 22, image: <img src={WindBroken} alt='windbkn' />, description: 'Wind, broken'},
-        {id: 22, image: <img src={WindFew} alt='windfew' />, description: 'Wind, few'},
-        {id: 23, image: <img src={WindOvc} alt='windovc' />, description: 'Wind, overcast'},
-        {id: 24, image: <img src={WindSct} alt='windsct' />, description: 'Wind, scattered'},
-        {id: 25, image: <img src={WindSkc} alt='windskc' />, description: 'Wind, sky clear'},
-        {id: 26, image: <img src={Hot} alt='hot' />, description: 'Hot'},
-        {id: 27, image: <img src={Hurricane} alt='hurricane' />, description: 'Hurricane'},
-        {id: 28, image: <img src={Tornado} alt='tornado' />, description: 'Tornado'},
-        {id: 29, image: <img src={TropStorm} alt='tropical storm' />, description: 'Tropical Storm'}
+        {id: 23, image: <img src={WindFew} alt='windfew' />, description: 'Wind, few'},
+        {id: 24, image: <img src={WindOvc} alt='windovc' />, description: 'Wind, overcast'},
+        {id: 25, image: <img src={WindSct} alt='windsct' />, description: 'Wind, scattered'},
+        {id: 26, image: <img src={WindSkc} alt='windskc' />, description: 'Wind, sky clear'},
+        {id: 27, image: <img src={Hot} alt='hot' />, description: 'Hot'},
+        {id: 28, image: <img src={Hurricane} alt='hurricane' />, description: 'Hurricane'},
+        {id: 29, image: <img src={Tornado} alt='tornado' />, description: 'Tornado'},
+        {id: 30, image: <img src={TropStorm} alt='tropical storm' />, description: 'Tropical Storm'}
     ];
 
     const mappingFunction = f => <tr key={f.id}><td>{f.image}</td><td>{f.description}</td></tr>

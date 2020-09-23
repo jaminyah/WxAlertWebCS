@@ -16,23 +16,18 @@ function Solve() {
                 This guide provides solutions to correct an invalid temperature value of 999&#176;F and to 
                 manually schedule weather alert updates.
             </p>
-            <p>
-                <h2>Issue: Temperature displayed is 999&#176;F</h2>
+            <h2>Issue: Temperature displayed is 999&#176;F</h2>
                 From time to time, weather stations may not be active. This is evident as an invalid current temperature value of
                 999 &#176;F displayed on the Current Weather view. Invalid temperature readings appear on
                 the Forecast View as 999&#176;.
-            </p>
-            <p>
-                <h3>Solution: Select a different weather station</h3> 
+            <h3>Solution: Select a different weather station</h3> 
                 Figure 1 - Troubleshooting, shows the steps to selecting a different weather station and obtaining a valid
                 temperature reading.
-            </p>
             <img className={styles.wximage} src={Err999} alt="troubleshooting" />
             <figcaption className={styles.figcaption}>Figure 1 - Troubleshooting</figcaption>
             <br/>
            
             <h4>Station Selection Steps</h4>
-            <p>
                 The steps described will follow the sequence outlined in Figure 1 - Troubleshooting.
                 <br/>
                 <br/>
@@ -66,8 +61,6 @@ function Solve() {
                 <strong>Step 7. </strong>
                 A corrected temperature value should now be shown. If the selected weather station does not provide a 
                 valid temperature value, repeat the steps to select a different station.
-            </p>
-            <p>
                 <h2>Issue: Change Alert Schedule</h2>
                 By default the alert update schedule is set to Auto. Auto sets the alert update schedule based on the 
                 severity of the forecast weather condition. For example a severe thunderstorm forecast sets the alert update
@@ -83,7 +76,6 @@ function Solve() {
                     <li>8 hours</li>
                     <li>12 hours</li>
                 </ul>
-            </p>
             <img className={styles.wximage} src={AlertSchedule} alt="set schedule" />
             <figcaption className={styles.figcaption}>Figure 3 - Alert Scheduling</figcaption>
             <br/>

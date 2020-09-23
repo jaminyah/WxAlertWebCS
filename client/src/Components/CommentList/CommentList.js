@@ -51,7 +51,6 @@ class CommentList extends React.Component {
     render() {
         return (
             <div>
-            <h2>Comment List</h2>
                 { this.state.comments.map((posting, i) =>
                     (
                         <div className="commentlist-container" key={i}>

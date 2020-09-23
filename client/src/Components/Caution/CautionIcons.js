@@ -14,13 +14,14 @@ function Caution() {
 
 
     const header = [
-        {col1: 'Icon', col2: 'Description'}
+        {id: 1, col1: 'Icon', col2: 'Description'}
     ];
 
-    const headerFunction = h => <tr>
-        <th id='wxrow-icon'>{h.col1}</th>
-        <th id='wxrow-desc'>{h.col2}</th>
-    </tr>;
+    const headerFunction = h => 
+        <tr key={h.id}>
+            <th id='wxrow-icon'>{h.col1}</th>
+            <th id='wxrow-desc'>{h.col2}</th>
+        </tr>;
 
     const tableHeader = header.map(headerFunction);
 
@@ -93,10 +94,9 @@ function Caution() {
                 </div>
                 <div className={styles.wxclear}></div>
                 <div>
-                    <p>
                         <h2>Advisory Icons</h2>
                         Table 2 - Advisory Icons is a partial list of alert advisory icons. 
-                    </p>
+                        
                     <table id='wxtable-icons'>
                         <thead>
                             {tableHeader}
