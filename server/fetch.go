@@ -32,7 +32,6 @@ func fetchComments(w http.ResponseWriter, r *http.Request) {
 	defer rows.Close()
 
 	jsonStr, _ := json.Marshal(userComments)
-	//fmt.Printf("%s\n", json_str)
 
 	// Send back data to client
 	w.Write(jsonStr)

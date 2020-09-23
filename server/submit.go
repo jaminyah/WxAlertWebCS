@@ -4,7 +4,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -43,11 +42,6 @@ func submitAjax(w http.ResponseWriter, r *http.Request) {
 
 	userName := param.Username
 	userMessage := param.Message
-
-	// Acknowledge receiving the data
-	fmt.Printf("User name: %s\n", userName)
-	fmt.Printf("Message body: %s\n", userMessage)
-	fmt.Printf("Timestamp: %s\n", now)
 
 	// Insert into database
 	statement, _ := database.Prepare("INSERT INTO comments (username, comment, date) VALUES (?, ?, ?)")

@@ -43,9 +43,6 @@ type configJsonBody struct {
 
 // base64Captcha create http handler
 func generateCaptchaHandler(w http.ResponseWriter, r *http.Request) {
-	//parse request parameters
-
-	fmt.Println("Stage 1 - no error")
 
 	decoder := json.NewDecoder(r.Body)
 	var param configJsonBody
@@ -56,8 +53,6 @@ func generateCaptchaHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 	var driver base64Captcha.Driver
-
-	fmt.Println("Stage 2 - no error")
 
 	//create base64 encoding captcha
 	switch param.CaptchaType {
@@ -127,7 +122,7 @@ func main() {
 	//api for verify captcha
 	http.HandleFunc("/api/verifyCaptcha", captchaVerifyHandler)
 
-	fmt.Printf("Starting HTTP server...\n")
+	fmt.Printf("Starting HTTP server on port 8088..\n")
 	if serverErr := http.ListenAndServe(":8088", nil); serverErr != nil {
 		log.Fatal(serverErr)
 	}

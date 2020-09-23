@@ -226,8 +226,8 @@ class InputForm extends React.Component {
                                             pattern="[0-9]*" inputMode="numeric" required value={this.state.form.VerifyValue || ''} 
                                                 onChange={this.changeHandler} />
 
-                                        <input type="button" className="captcha-verify" id="captcha-verify" 
-                                                        onClick={this.verifyCaptcha} value="Verify Captcha" />
+                                        <button type="button" className="captcha-verify" id="captcha-verify" 
+                                                        onClick={this.verifyCaptcha} >Verify</button>
                                     </div>
                                 </div>
                             )
