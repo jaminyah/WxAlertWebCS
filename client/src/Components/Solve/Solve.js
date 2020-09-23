@@ -13,16 +13,21 @@ function Solve() {
 
             <h1>Solution Guide</h1>
             <p>
-                This guide provides solutions to correct an invalid temperature value of 999&#176;F and to 
+                This guide provides solutions to correct an invalid temperature value of ---&#176;F and to 
                 manually schedule weather alert updates.
             </p>
-            <h2>Issue: Temperature displayed is 999&#176;F</h2>
-                From time to time, weather stations may not be active. This is evident as an invalid current temperature value of
-                999 &#176;F displayed on the Current Weather view. Invalid temperature readings appear on
-                the Forecast View as 999&#176;.
+            <h2>Issue: Temperature displayed is ---&#176;F</h2>
+                Occassionally weather stations may not be actively available to provide updated weather data. 
+                When this occurs the app displays an invalid current temperature reading of
+                --- &#176;F on the Current Weather view. Invalid temperature readings also appear on
+                the Forecast View as ---&#176;.
             <h3>Solution: Select a different weather station</h3> 
-                Figure 1 - Troubleshooting, shows the steps to selecting a different weather station and obtaining a valid
-                temperature reading.
+            <p>
+                Figure 1 - Troubleshooting, shows the steps for selecting a different weather station. Selecting a 
+                different weather station, from the station picker view, can help with obtaining a valid temperature 
+                reading if it is available.
+            </p>
+
             <img className={styles.wximage} src={Err999} alt="troubleshooting" />
             <figcaption className={styles.figcaption}>Figure 1 - Troubleshooting</figcaption>
             <br/>
