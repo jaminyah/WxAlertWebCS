@@ -221,7 +221,7 @@ class InputForm extends React.Component {
                                     <div className="col-25"></div>
                                     <div className="col-75">
                                         <div id="captcha-img">
-                                            <img src={this.state.form.blob} alt='captcha' />
+                                            <img src={this.state.form.blob} alt='' onClick={this.verifyCaptcha} />
                                         </div>
                                         <input type="number" name="VerifyValue" id="VerifyValue" placeholder="Your math solution: " 
                                             pattern="[0-9]*" inputMode="numeric" required value={this.state.form.VerifyValue || ''} 
