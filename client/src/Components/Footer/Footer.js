@@ -2,7 +2,6 @@ import React from 'react';
 import './Footer.css';
 import styles from '../Component.module.css';
 
-
 const today = new Date();
 
 function Footer() {
@@ -13,13 +12,13 @@ function Footer() {
                     <div className="col-lg-8 col-md-8 col-sm-12">
                     <h6 className="text-uppercase font-weight-bold">Version Information</h6>
                     <p>Latest app version: 2.3.6<br/>    
-                    Latest build number: 410
+                        Latest build number: 410
                     </p>                   
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-12">
                         <h6 className="text-uppercase font-weight-bold">Contact</h6>
                         <p>
-                            patrick dot allison.us at icloud dot com
+                            patrick [dot] allison.us [at] icloud [dot] com
                         </p>
                     </div>
                 </div>

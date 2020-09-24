@@ -7,13 +7,13 @@ import WxIcons from './Components/Weather/WxIcons';
 import Alert from './Components/Alert/AlertIcons';
 import Caution from './Components/Caution/CautionIcons';
 import Legal from './Components/Legal/Legal';
-import Contact from './Components/Comments/Comments';
+import Comments from './Components/Comments/Comments';
 import NotFound from './Components/NotFound/NotFound';
 import NavMenu from './Components/NavMenu/NavMenu';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Router>
         <NavMenu />
         <Switch>
@@ -36,7 +36,7 @@ function App() {
             <Legal />
           </Route>
           <Route path='/contact'>
-            <Contact />
+            <Comments />
           </Route>
           <Route path="*">
             <NotFound />

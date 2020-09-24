@@ -1,5 +1,4 @@
 
-
 h1 {
   padding-top: 10px;
 }
@@ -15,17 +14,28 @@ blockquote p {
   display: inline;
 }
 
+.topcontainer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 .container {
+
     margin-right: auto;
     margin-left: auto;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
     /* for edge cases: */
     width: 100%;
     max-width: 100%;
+
+  }
+
+  .content {
+    flex: 1;
   }
   
-
   .wximage {
     display: flex;
     margin-left: auto;
@@ -81,3 +91,11 @@ blockquote p {
       padding-bottom: 10px;
     }
   }
+
+  /*   Sticky Footer */
+  .footer {
+    margin-top: auto;
+  }
+ 
+
+  
