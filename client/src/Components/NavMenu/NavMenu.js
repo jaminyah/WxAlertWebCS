@@ -11,11 +11,11 @@ function NavMenu () {
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 700px)");
-        mediaQuery.addEventListener('change', handleMediaQueryChange);
+        mediaQuery.addListener(handleMediaQueryChange);
         handleMediaQueryChange(mediaQuery);
     
         return () => {
-          mediaQuery.removeEventListener('change', handleMediaQueryChange);
+          mediaQuery.removeListener(handleMediaQueryChange);
         };
       }, []);
     
