@@ -10,6 +10,10 @@
     max-width: 100%;
   }
 
+  #comment-form {
+      padding: 8px;
+  }
+
 .comment-container {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -58,10 +62,10 @@ button[type=button] {
     font-weight: bold;
 }
 
-label {
+/*label {
     padding: 12px, 12px, 12px, 0;
     display: inline-block;
-}
+}*/
 
 input[type=text], input[type=number] {
     width: 100%;
